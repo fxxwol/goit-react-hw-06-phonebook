@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-const contactsSlice = createSlice({
+export const contactsSlice = createSlice({
     name: 'contacts',
     initialState: [],
     reducers: {
