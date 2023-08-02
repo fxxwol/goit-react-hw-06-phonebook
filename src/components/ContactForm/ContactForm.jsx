@@ -7,7 +7,7 @@ function ContactForm({ onSubmit }) {
   const validate = ({ name, number }) => {
     const errors = {};
     if (
-      !/^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(name)
+      !/^[a-zA-Zа-яА-Я]+((['-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(name)
     ) {
       errors.name = 'Invalid name';
     }

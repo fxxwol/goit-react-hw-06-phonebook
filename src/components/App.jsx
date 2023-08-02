@@ -8,15 +8,15 @@ import { change } from 'redux/filterSlice';
 
 function App() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.contacts);
   const filter = useSelector(state => state.filter);
-
+console.log(contacts)
   const handleSumbit = ({ name, number }) => {
     dispatch(add({ name, number }));
   };
 
   const handleDelete = id => {
-    dispatch(remove(id));
+    dispatch(remove({id}));
   };
 
   const filterContacts = () => {
