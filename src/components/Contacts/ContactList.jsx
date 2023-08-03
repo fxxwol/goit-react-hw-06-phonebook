@@ -3,7 +3,7 @@ import ContactItem from './ContactItem';
 import { Item, List } from './ContactList.styled';
 
 const ContactList = () => {
-  const contacts = useSelector(state => state)
+  const contacts = useSelector(state => state.contacts)
   console.log(contacts)
   const filter = useSelector(state => state.filter)
 
