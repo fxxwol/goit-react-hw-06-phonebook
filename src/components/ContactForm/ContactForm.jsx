@@ -1,9 +1,12 @@
 import { FormControl, Input, InputLabel } from '@mui/material';
 import { useFormik } from 'formik';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { add } from 'redux/contactsSlice';
 import { Form, SubmitBtn } from './ContactForm.styled';
 
-function ContactForm({ onSubmit }) {
+function ContactForm() {
+  const contacts = useSelector(state => state.contacts.contacts)
+  const dispatch = useDispatch();
   const validate = ({ name, number }) => {
     const errors = {};
     if (
@@ -29,7 +32,11 @@ function ContactForm({ onSubmit }) {
     },
     validate: validate,
     onSubmit: ({ name, number }) => {
-      onSubmit({ name, number });
+      if (contacts.find(contact => contact.name === name)) {
+        alert(`${name} is already in your contacts`);
+        return;
+      }
+      dispatch(add({ name, number }));
       formik.resetForm();
     },
   });
@@ -68,9 +75,5 @@ function ContactForm({ onSubmit }) {
     </Form>
   );
 }
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func,
-};
 
 export default ContactForm;

@@ -8,10 +8,6 @@ const contactsSlice = createSlice({
     initialState: {contacts: []},
     reducers: {
         add({contacts}, { payload: { name, number } }) {
-            if (contacts.find(contact => contact.name === name)) {
-                alert(`${name} is already in your contacts`);
-                return;
-            }
            contacts.push({
                 id: nanoid(),
                 name: name,
